@@ -1,4 +1,4 @@
-angular.module('av3', []);
+angular.module('av3', ['ui.router']);
 
 //importar daqui a pouco
 /*

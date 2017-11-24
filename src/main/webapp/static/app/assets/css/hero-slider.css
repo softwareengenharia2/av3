@@ -214,10 +214,10 @@ Single slide style
   background-image: url(../image/goiaba.jpg);
 }
 .cd-hero-slider li:nth-of-type(2) {
-  background-image: url(../image/goiaba.jpg);
+  background-image: url(../image/goiaba2.jpg);
 }
 .cd-hero-slider li:nth-of-type(3) {
-  background-image: url(../image/goiaba.jpg);
+  background-image: url(../image/goiaba3.jpg);
 }
 .cd-hero-slider .cd-full-width,
 .cd-hero-slider .cd-half-width {

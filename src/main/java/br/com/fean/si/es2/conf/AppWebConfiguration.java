@@ -7,23 +7,24 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import br.com.fean.si.es2.controller.HomeController;
+
 @EnableWebMvc
-@ComponentScan(basePackages = {"br.com.fean.si.es2.controller", "br.com.fean.si.es2.service", "br.com.fean.si.es2.dao"})
+@ComponentScan(basePackageClasses = {HomeController.class})
 public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 
     @Bean
     public InternalResourceViewResolver internalResourceViewResolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
         resolver.setPrefix("/WEB-INF/views/");
-        resolver.setSuffix(".jsp");
         return resolver;
     }
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry
-                .addResourceHandler("/assets/**")
-                .addResourceLocations("/assets/");
+                .addResourceHandler("/static/**")
+                .addResourceLocations("/static/");
     }
 
 }
