@@ -4,10 +4,13 @@
 </title>
 <head>
 
-    <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <meta name="description" content="">
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <link rel="stylesheet" href="static/app/assets/css/bootstrap.min.css">
         <link rel="stylesheet" href="static/app/assets/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="static/app/assets/css/fontAwesome.css">
@@ -18,11 +21,11 @@
 
 </head>
 
-<body>
+<body ng-controller="MainController">
 
     <div ui-view id="wrapper"></div>
 
-    <div ng-controller="MainController">
+    <div >
         <div class="header">
             <div class="container">
                 <nav class="navbar navbar-inverse" role="navigation">
@@ -40,11 +43,11 @@
                     <!--/.navbar-header-->
                     <div id="main-nav" class="collapse navbar-collapse">
                         <ul class="nav navbar-nav">
-                            <li><a href="#" class="scroll-top">Home</a></li>
-                            <li><a href="#" class="scroll-link" data-id="about">About Us</a></li>
+                            <li><a href="#" class="scroll-top">Inicio</a></li>
+                            <li><a href="#" class="scroll-link" data-id="about">Sobre nos</a></li>
                             <li><a href="#" class="scroll-link" data-id="portfolio">Portfolio</a></li>
                             <li><a href="#" class="scroll-link" data-id="blog">Blog</a></li>
-                            <li><a href="#" class="scroll-link" data-id="contact">Contact Us</a></li>
+                            <li><a href="#" class="scroll-link" data-id="contact">Solicitar Pedido</a></li>
                         </ul>
                     </div>
                     <!--/.navbar-collapse-->
@@ -192,7 +195,7 @@
                                 </li>
                                 <li>
                                     <div class="primary-button">
-                                        <a href="#">Purchase Now</a>
+                                        <a href="#" class="scroll-link" data-id="contact">Purchase Now</a>
                                     </div>
                                 </li>
                             </ul>
@@ -454,25 +457,36 @@
                     </div>
                     <div class="col-md-6">
                         <div class="row">
-                            <form id="contact" action="" method="post">
+                            {{obj}}
+                            <form id="contact">
                                 <div class="col-md-6">
                                     <fieldset>
-                                        <input name="name" type="text" class="form-control" id="name" placeholder="Your name..." required="">
+                                        <input ng-model="obj.nome" name="name" type="text" class="form-control" id="name" placeholder="Seu Nome" required="true">
                                     </fieldset>
                                 </div>
                                 <div class="col-md-6">
                                     <fieldset>
-                                        <input name="email" type="email" class="form-control" id="email" placeholder="Your email..." required="">
+                                        <input ng-model="obj.email" name="email" type="email" class="form-control" id="email" placeholder="Seu Email" required="true">
+                                    </fieldset>
+                                </div>
+                                <div class="col-md-6">
+                                    <fieldset>
+                                        <input ng-model="obj.cnpj" name="cnpj" type="text" class="form-control" id="cnpj" placeholder="Seu CNPJ" required="true">
+                                    </fieldset>
+                                </div>
+                                <div class="col-md-6">
+                                    <fieldset>
+                                        <input ng-model="obj.quantidade" name="quantidade" type="number" class="form-control" id="quantidade" placeholder="Quantidade desejada" required="true">
                                     </fieldset>
                                 </div>
                                 <div class="col-md-12">
                                     <fieldset>
-                                        <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your message..." required=""></textarea>
+                                        <textarea ng-model="obj.mensagem" name="message" rows="6" class="form-control" id="message" placeholder="Mensagem" required=""></textarea>
                                     </fieldset>
                                 </div>
                                 <div class="col-md-12">
                                     <fieldset>
-                                        <button type="submit" id="form-submit" class="btn">Send Message</button>
+                                        <button ng-click="solicitarPedido()" id="form-submit" class="btn">Solicitar Pedido</button>
                                     </fieldset>
                                 </div>
                             </form>
@@ -481,7 +495,6 @@
                 </div>
             </div>
         </div>
-
 
         <footer>
             <div class="container">
@@ -571,8 +584,11 @@
 <script src="static/node_modules/angular/angular.js"></script>
 <script src="static/bower_components/angular-bootstrap/ui-bootstrap.js"></script>
 <script src="static/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+
 <script src="static/app/script/app.js"></script>
 <script src="static/app/script/config/router.js"></script>
+
+<script src="static/app/script/service/pedidoService.js"></script>
 <script src="static/app/script/controller/MainController.js"></script>
 
 </html>
