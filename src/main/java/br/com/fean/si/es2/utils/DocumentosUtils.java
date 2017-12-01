@@ -1,6 +1,6 @@
 package br.com.fean.si.es2.utils;
 
-public class ValidacaoDocumentoPessoa {
+public class DocumentosUtils {
 	
 	private static final int[] pesoCPF = {11, 10, 9, 8, 7, 6, 5, 4, 3, 2};
 	private static final int[] pesoCNPJ = {6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2};
@@ -24,11 +24,15 @@ public class ValidacaoDocumentoPessoa {
 	}
    
 	public static boolean isValidCNPJ(String cnpj) {
-		cnpj = cnpj.replace(".", "").replaceAll("-", "").replaceAll("/", "");
+		cnpj = getCnpjApenasComLetras(cnpj);
 		if ((cnpj==null)||(cnpj.length()!=14)) return false;
 		Integer digito1 = calcularDigito(cnpj.substring(0,12), pesoCNPJ);
 		Integer digito2 = calcularDigito(cnpj.substring(0,12) + digito1, pesoCNPJ);
 		return cnpj.equals(cnpj.substring(0,12) + digito1.toString() + digito2.toString());
+	}
+
+	public static String getCnpjApenasComLetras(String cnpj) {
+		return cnpj.replace(".", "").replaceAll("-", "").replaceAll("/", "");
 	}
 
 }

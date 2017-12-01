@@ -13,7 +13,7 @@ import java.util.concurrent.Callable;
 
 
 @RestController
-@RequestMapping("pre-cadastro-cliente")
+@RequestMapping("/pre-cadastro-cliente")
 public class PreCadastroClienteController {
 
     @Autowired

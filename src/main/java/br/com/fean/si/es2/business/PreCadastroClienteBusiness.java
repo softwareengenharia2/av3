@@ -5,7 +5,7 @@ import br.com.fean.si.es2.dao.PreCadastroClienteDAO;
 import br.com.fean.si.es2.dto.PreCadastroClienteDTO;
 import br.com.fean.si.es2.response.ResponseException;
 import br.com.fean.si.es2.utils.EnviadorDeEmail;
-import br.com.fean.si.es2.utils.ValidacaoDocumentoPessoa;
+import br.com.fean.si.es2.utils.DocumentosUtils;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ public class PreCadastroClienteBusiness {
 
     public void process(PreCadastroClienteDTO dto) {
         Cliente bean = new Cliente(dto);
-        if ( !ValidacaoDocumentoPessoa.isValidCNPJ(bean.getCnpj()) ) {
+        if ( !DocumentosUtils.isValidCNPJ(bean.getCnpj()) ) {
             throw new ResponseException("CNPJ inválido");
         }
 
@@ -39,11 +39,12 @@ public class PreCadastroClienteBusiness {
 
     private boolean verificarCnpjSerasa(Cliente bean) {
         boolean status = true;
+        String cnpj= DocumentosUtils.getCnpjApenasComLetras(bean.getCnpj());
         try {
-            String uri = "https://www.receitaws.com.br/v1/cnpj/" + bean.getEmail();
+            String uri = "https://www.receitaws.com.br/v1/cnpj/" + cnpj;
             String response = rest.getForObject(uri, String.class);
             JsonObject responseJson = gson.fromJson(response, JsonObject.class);
-            status = responseJson.get("situacao").getAsString().equals("ATIVO");
+            status = responseJson.get("situacao").getAsString().equals("ATIVA");
         } catch (RestClientException e) {
             status = false;
         }
