@@ -1,1 +1,1 @@
-web: java -jar target/engenhariaDeSoftware2.war
+web: java $JAVA_OPTS -cp target/classes:target/dependency/* HelloWorld
