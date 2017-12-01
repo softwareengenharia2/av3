@@ -7,6 +7,7 @@ import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.client.RestTemplate;
 
 import javax.persistence.EntityManagerFactory;
 import java.util.Properties;
@@ -33,7 +34,7 @@ public class JPAConfiguration {
         properties.setProperty("hibernate.show_sql", "true");
         properties.setProperty("hibernate.hbm2ddl.auto", "update");
         factoryBean.setJpaProperties(properties);
-        factoryBean.setPackagesToScan("br.com.fean.si.es2.entity");
+        factoryBean.setPackagesToScan("br.com.fean.si.es2.bean");
 
         return factoryBean;
     }
@@ -41,6 +42,11 @@ public class JPAConfiguration {
     @Bean
     public JpaTransactionManager transactionManager (EntityManagerFactory emf) {
         return new JpaTransactionManager(emf);
+    }
+
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
     }
 
 }

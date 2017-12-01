@@ -90,9 +90,9 @@ p {
 }
 
 .navbar-nav>li>a {
-	color: #fff!important;
-	font-size: 13px;
-	font-weight: 300;
+	color: #000!important;
+	font-size: 15px;
+	font-weight: bold;
 	text-transform: uppercase;
 	text-shadow: none;
 	line-height: 80px;
@@ -160,7 +160,7 @@ p {
 .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
 	background-color: #a2cf8d;
 }
-bootstrap.min.css:5
+bootstrap.min.css
 .navbar-toggle {
     position: relative;
     float: right;
@@ -570,10 +570,10 @@ ul.cd-hero-slider {
 }
 
 #contact {
-	background-image: url(../img/contact-bg.png);
 	background-repeat: no-repeat;
 	width: 100%;
 	background-size: cover;
+	background-color: rgba(0, 170, 0, 0.5);
 }
 
 #contact .map img {
@@ -594,6 +594,11 @@ ul.cd-hero-slider {
 	height: 50px;
 	width: 100%;
 	margin-bottom: 30px;
+}
+
+#contact input::-webkit-input-placeholder, 
+#contact textarea::-webkit-input-placeholder{
+	color: rgba(0, 0, 0, 0.5);
 }
 
 #contact textarea {
