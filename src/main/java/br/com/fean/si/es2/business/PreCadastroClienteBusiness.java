@@ -1,23 +1,21 @@
 package br.com.fean.si.es2.business;
 
-import br.com.fean.si.es2.bean.Cliente;
-import br.com.fean.si.es2.dao.PreCadastroClienteDAO;
-import br.com.fean.si.es2.dto.PreCadastroClienteDTO;
-import br.com.fean.si.es2.response.ResponseException;
-import br.com.fean.si.es2.utils.EnviadorDeEmail;
-import br.com.fean.si.es2.utils.DocumentosUtils;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+
+import br.com.fean.si.es2.bean.Cliente;
+import br.com.fean.si.es2.dto.PreCadastroClienteDTO;
+import br.com.fean.si.es2.response.ResponseException;
+import br.com.fean.si.es2.utils.DocumentosUtils;
+import br.com.fean.si.es2.utils.EnviadorDeEmail;
+
 @Service
 public class PreCadastroClienteBusiness {
-
-    @Autowired
-    private PreCadastroClienteDAO dao;
 
     @Autowired
     private RestTemplate rest;
@@ -33,7 +31,7 @@ public class PreCadastroClienteBusiness {
         boolean status = verificarCnpjSerasa(bean);
         EnviadorDeEmail.enviaEmailDePreCadastro(status, bean.getEmail());
         if (status) {
-            dao.persist(bean);
+            //dao.persist(bean);
         }
     }
 
