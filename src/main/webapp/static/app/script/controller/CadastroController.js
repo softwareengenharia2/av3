@@ -1,5 +1,9 @@
-angular.module('av3').controller('ClienteController', function($scope, cliente) {
+angular.module('av3').controller('CadastroController', function($scope, cliente, $location) {
 
-    console.log(cliente);
+    $scope.cliente = cliente;
+
+    $scope.cancelar = function() {
+         $location.path('/');
+    };
 
 });

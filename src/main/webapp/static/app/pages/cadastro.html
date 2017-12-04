@@ -1,9 +1,85 @@
-<div class="jumbotron">
-  <h1 class="display-3">Hello, world!</h1>
-  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-  <hr class="my-4">
-  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-  <p class="lead">
-    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-  </p>
+<div class="form-horizontal">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Finalizar pedido</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="idNome">Nome</label>  
+  <div class="col-md-5">
+  <input id="idNome" ng-model="cliente.nome" name="idNome" type="text" placeholder="Nome do usuário" class="form-control input-md" disabled="true">
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="idCnpj">CNPJ</label>  
+  <div class="col-md-2">
+  <input id="idCnpj" ng-model="cliente.cnpj" name="idCnpj" type="text" placeholder="CNPJ" class="form-control input-md" disabled="true">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="quantidade">Quantidade</label>  
+  <div class="col-md-2">
+  <input id="quantidade" ng-model="cliente.quantidade" name="quantidade" type="text" placeholder="Quantidade" class="form-control input-md" required="">
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="telefone">Telefone</label>  
+  <div class="col-md-5">
+  <input id="telefone" ng-model="cliente.telefone" name="telefone" type="text" placeholder="Telefone" class="form-control input-md" required="">
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="cpf">CPF</label>  
+  <div class="col-md-2">
+    <input id="cpf" ng-model="cliente.cpf" name="cpf" type="text" placeholder="CPF" class="form-control input-md" required="">
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="numero">Número</label>  
+  <div class="col-md-2">
+    <input id="numero" ng-model="cliente.numero" name="numero" type="text" placeholder="Número" class="form-control input-md" required="">
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="logradouro">Logradouro</label>  
+  <div class="col-md-5">
+  <input id="logradouro" ng-model="cliente.logradouro" name="logradouro" type="text" placeholder="Logradouro" class="form-control input-md" required="">
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="cidade">Cidade</label>  
+  <div class="col-md-3">
+    <input id="cidade" ng-model="cliente.cidade" name="cidade" type="text" placeholder="Cidade" class="form-control input-md" required="">
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="estado">Estado</label>  
+  <div class="col-md-3">
+    <input id="estado" ng-model="cliente.estado" name="estado" type="text" placeholder="Estado" class="form-control input-md" required="">
+  </div>
+</div>
+
+<!-- Button (Double) -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="idConfirmar"></label>
+  <div class="col-md-8">
+    <button id="idConfirmar" name="idConfirmar" class="btn btn-primary">confirmar</button>
+    <button id="idCancelar" ng-click="cancelar()" name="idCancelar" class="btn btn-danger">Cancelar</button>
+  </div>
+</div>
+
+</fieldset>
 </div>

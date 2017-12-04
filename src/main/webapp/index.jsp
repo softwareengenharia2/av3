@@ -49,5 +49,6 @@
 
 <script src="static/app/script/service/pedidoService.js"></script>
 <script src="static/app/script/controller/MainController.js"></script>
+<script src="static/app/script/controller/CadastroController.js"></script>
 
 </html>
