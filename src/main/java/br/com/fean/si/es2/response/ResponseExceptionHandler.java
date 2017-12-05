@@ -7,9 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
-import org.springframework.security.access.AccessDeniedException;
-import org.springframework.security.authentication.AuthenticationServiceException;
-import org.springframework.security.authentication.InternalAuthenticationServiceException;
+//import org.springframework.security.access.AccessDeniedException;
+//import org.springframework.security.authentication.AuthenticationServiceException;
+//import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.transaction.CannotCreateTransactionException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -61,34 +61,34 @@ public class ResponseExceptionHandler {
 	@ResponseBody
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(MethodArgumentNotValidException.class)
-    public Response processValidationError(MethodArgumentNotValidException manve, WebRequest request) {
-        List<Error> errors = new ArrayList<>();
-        BindingResult br = manve.getBindingResult();
-        List<FieldError> fieldErrors = br.getFieldErrors();
-        for (FieldError error : fieldErrors) {
-        	String message = MessageSystem.formatMessage(error.getDefaultMessage());
-        	errors.add(new Error(error.getField(), message, true));
-        }
-        
-        Response response = Response.getInstance();
-        response.setStatus(EnumStatusRetorno.ERROR);
-        response.setMessage("validacao");
-        response.setErrors(errors);
-        return response;
-    }
+	public Response processValidationError(MethodArgumentNotValidException manve, WebRequest request) {
+		List<Error> errors = new ArrayList<>();
+		BindingResult br = manve.getBindingResult();
+		List<FieldError> fieldErrors = br.getFieldErrors();
+		for (FieldError error : fieldErrors) {
+			String message = MessageSystem.formatMessage(error.getDefaultMessage());
+			errors.add(new Error(error.getField(), message, true));
+		}
 
-	/** @param request */
-	@ResponseBody
-	@ResponseStatus(HttpStatus.FORBIDDEN)
-	@ExceptionHandler({AccessDeniedException.class,AuthenticationServiceException.class, InternalAuthenticationServiceException.class})
-	public Response handleAccessDeniedException(HttpServletRequest req, RuntimeException e, WebRequest request) {
 		Response response = Response.getInstance();
 		response.setStatus(EnumStatusRetorno.ERROR);
-		response.setMessage(MessageSystem.getMessage("system.acesso.negado"));
-		response.setResponse(e);
+		response.setMessage("validacao");
+		response.setErrors(errors);
 		return response;
 	}
-	
+
+//	/** @param request */
+//	@ResponseBody
+//	@ResponseStatus(HttpStatus.FORBIDDEN)
+//	@ExceptionHandler({AccessDeniedException.class,AuthenticationServiceException.class, InternalAuthenticationServiceException.class})
+//	public Response handleAccessDeniedException(HttpServletRequest req, RuntimeException e, WebRequest request) {
+//		Response response = Response.getInstance();
+//		response.setStatus(EnumStatusRetorno.ERROR);
+//		response.setMessage(MessageSystem.getMessage("system.acesso.negado"));
+//		response.setResponse(e);
+//		return response;
+//	}
+
 	/** @param request */
 	@ResponseBody
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -101,7 +101,7 @@ public class ResponseExceptionHandler {
 		response.setResponse(e);
 		return response;
 	}
-	
+
 	@ResponseBody
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(ResponseException.class)
@@ -109,5 +109,5 @@ public class ResponseExceptionHandler {
 		ResponseException ire = (ResponseException) e;
 		return ire.getResponse();
 	}
-	
+
 }
