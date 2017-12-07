@@ -61,7 +61,7 @@ public class ArtigoServiceImpl implements ArtigoService {
 
     public ArtigoDTO entityToDto(Artigo artigo) {
         ArtigoDTO artigoDTO = new ArtigoDTO();
-        artigoDTO.setIdArtigo(artigo.getIdArtigo());
+        artigoDTO.setIdArtigo(artigo.getId());
         artigoDTO.setTitulo(artigo.getTitulo());
         artigoDTO.setConteudo(artigo.getConteudo());
         artigoDTO.setTipoArtigo(artigo.getTipoArtigo());
@@ -72,7 +72,7 @@ public class ArtigoServiceImpl implements ArtigoService {
 
     public Artigo DTOToEntity(ArtigoDTO artigoDTO) {
         Artigo artigo = new Artigo();
-        artigo.setIdArtigo(artigoDTO.getIdArtigo());
+        artigo.setId(artigoDTO.getIdArtigo());
         artigo.setTitulo(artigoDTO.getTitulo());
         artigo.setConteudo(artigoDTO.getConteudo());
         artigo.setTipoArtigo(artigoDTO.getTipoArtigo());

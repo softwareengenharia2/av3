@@ -44,9 +44,4 @@ public class JPAConfiguration {
         return new JpaTransactionManager(emf);
     }
 
-    @Bean
-    public RestTemplate restTemplate() {
-        return new RestTemplate();
-    }
-
 }

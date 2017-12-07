@@ -21,13 +21,13 @@ public class ResponseException extends RuntimeException  {
 	public ResponseException(String message, String... params) {
 		Response response = Response.getInstance();
 		response.setStatus(EnumStatusRetorno.ERROR);
-		response.setMessage(MessageSystem.formatMessage(message, params));
+		response.setMessage(message);
 		this.response = response;
 	}
 	
 	public ResponseException(FieldForm field, String message, String... params) {
 		List<Error> errors = new ArrayList<>();
-        errors.add(new Error(field.getName(), MessageSystem.formatMessage(message, params), true));
+        errors.add(new Error(field.getName(), message));
         
         Response response = Response.getInstance();
 		response.setStatus(EnumStatusRetorno.ERROR);
@@ -39,7 +39,7 @@ public class ResponseException extends RuntimeException  {
 	public ResponseException(String message, List<Error> errors) {
 		Response response = Response.getInstance();
 		response.setStatus(EnumStatusRetorno.ERROR);
-		response.setMessage(MessageSystem.formatMessage(message));
+		response.setMessage(message);
 		response.setErrors(errors);
 		this.response = response;
 	}
@@ -47,7 +47,7 @@ public class ResponseException extends RuntimeException  {
 	public ResponseException(Exception exception, String message, String... params) {
 		Response response = Response.getInstance();
 		response.setStatus(EnumStatusRetorno.ERROR);
-		response.setMessage(MessageSystem.formatMessage(message, params));
+		response.setMessage(message);
 		this.response = response;
 		this.exception = exception;
 	}

@@ -39,9 +39,9 @@ public class ResponseExceptionHandler {
 		if(exception.getCause() instanceof InvalidFormatException) {
 			InvalidFormatException invalid = (InvalidFormatException) exception.getCause();
 			String valor = invalid.getValue().toString();
-			response.setMessage(MessageSystem.getMessage("system.erro.converter.valor", valor));
+			response.setMessage("Erro ao converter o valor");
 		} else {
-			response.setMessage(MessageSystem.getMessage("system.erro.converter.valor"));
+			response.setMessage("Erro ao converter o valor");
 		}
 		return response;
 	}
@@ -53,7 +53,7 @@ public class ResponseExceptionHandler {
 	public Response handleCannotCreateTransactionException(WebRequest request, RuntimeException e) {
 		Response response = Response.getInstance();
 		response.setStatus(EnumStatusRetorno.ERROR);
-		response.setMessage(MessageSystem.getMessage("system.tempo.esgotado"));
+		response.setMessage("Tempo esgotado");
 		response.setResponse(e);
 		return response;
 	}
@@ -66,8 +66,7 @@ public class ResponseExceptionHandler {
 		BindingResult br = manve.getBindingResult();
 		List<FieldError> fieldErrors = br.getFieldErrors();
 		for (FieldError error : fieldErrors) {
-			String message = MessageSystem.formatMessage(error.getDefaultMessage());
-			errors.add(new Error(error.getField(), message, true));
+			errors.add(new Error(error.getField(), error.getDefaultMessage()));
 		}
 
 		Response response = Response.getInstance();
@@ -77,19 +76,6 @@ public class ResponseExceptionHandler {
 		return response;
 	}
 
-//	/** @param request */
-//	@ResponseBody
-//	@ResponseStatus(HttpStatus.FORBIDDEN)
-//	@ExceptionHandler({AccessDeniedException.class,AuthenticationServiceException.class, InternalAuthenticationServiceException.class})
-//	public Response handleAccessDeniedException(HttpServletRequest req, RuntimeException e, WebRequest request) {
-//		Response response = Response.getInstance();
-//		response.setStatus(EnumStatusRetorno.ERROR);
-//		response.setMessage(MessageSystem.getMessage("system.acesso.negado"));
-//		response.setResponse(e);
-//		return response;
-//	}
-
-	/** @param request */
 	@ResponseBody
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
 	@ExceptionHandler({RuntimeException.class, Exception.class})
@@ -97,7 +83,7 @@ public class ResponseExceptionHandler {
 		e.printStackTrace();
 		Response response = Response.getInstance();
 		response.setStatus(EnumStatusRetorno.ERROR);
-		response.setMessage(MessageSystem.getMessage("system.erro.interno"));
+		response.setMessage("Erro interno");
 		response.setResponse(e);
 		return response;
 	}

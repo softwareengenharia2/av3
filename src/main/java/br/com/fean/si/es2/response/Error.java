@@ -5,10 +5,10 @@ public class Error {
 	private String campo;
 	private String mensagem;
 
-	public Error(String campo, String mensagem, boolean isTranslate) {
+	public Error(String campo, String mensagem) {
 		super();
 		this.campo = campo;
-		this.mensagem = isTranslate ? mensagem : MessageSystem.formatMessage(mensagem);
+		this.mensagem = mensagem;
 	}
 
 	public String getCampo() {

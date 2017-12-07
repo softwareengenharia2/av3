@@ -1,16 +1,17 @@
 package br.com.fean.si.es2.bean;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name = "artigo")
-public class Artigo {
+@Getter
+@Setter
+public class Artigo extends Bean {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_artigo")
-    private Long idArtigo;
     @Column(name = "titulo")
     private String titulo;
     @Column(name = "conteudo")
@@ -26,59 +27,11 @@ public class Artigo {
     }
 
     public Artigo(Long idArtigo, String titulo, String conteudo, String tipoArtigo, Date data, Boolean aprovado) {
-        this.idArtigo = idArtigo;
+        this.id = idArtigo;
         this.titulo = titulo;
         this.conteudo = conteudo;
         this.tipoArtigo = tipoArtigo;
         this.data = data;
-        this.aprovado = aprovado;
-    }
-
-    public Long getIdArtigo() {
-        return idArtigo;
-    }
-
-    public void setIdArtigo(Long idArtigo) {
-        this.idArtigo = idArtigo;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public String getConteudo() {
-        return conteudo;
-    }
-
-    public void setConteudo(String conteudo) {
-        this.conteudo = conteudo;
-    }
-
-    public String getTipoArtigo() {
-        return tipoArtigo;
-    }
-
-    public void setTipoArtigo(String tipoArtigo) {
-        this.tipoArtigo = tipoArtigo;
-    }
-
-    public Date getData() {
-        return data;
-    }
-
-    public void setData(Date data) {
-        this.data = data;
-    }
-
-    public Boolean getAprovado() {
-        return aprovado;
-    }
-
-    public void setAprovado(Boolean aprovado) {
         this.aprovado = aprovado;
     }
 
