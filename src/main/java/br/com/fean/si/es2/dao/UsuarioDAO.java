@@ -18,7 +18,7 @@ public class UsuarioDAO extends AbstractDAO<Usuario> {
 
     public Usuario getByCnpj(String cnpj) {
         try {
-            Query query = entityManager.createQuery("Select c From Cliente WHERE c.documento = :cnjp", Usuario.class);
+            Query query = entityManager.createQuery("Select c From Usuario c WHERE c.documento = :cnpj", Usuario.class);
             query.setParameter("cnpj", cnpj);
             return (Usuario) query.getSingleResult();
         }catch(NoResultException e) {

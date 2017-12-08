@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @EnableWebMvc
-@ComponentScan(basePackages = {"br.com.fean.si.es2.controller", "br.com.fean.si.es2.business", "br.com.fean.si.es2.dao"})
+@ComponentScan(basePackages = {"br.com.fean.si.es2.controller", "br.com.fean.si.es2.business", "br.com.fean.si.es2.dao", "br.com.fean.si.es2.response"})
 public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 
     @Bean

@@ -22,7 +22,8 @@ public class CNPJBusiness {
     private UsuarioBusiness usuarioBusiness;
 
     public Boolean existsCnpj(String cnpj) {
-        return usuarioBusiness.getClienteByCnpj(cnpj) == null ? true : false;
+        String cnpjApenasComLetras = DocumentosUtils.getCnpjApenasComLetras(cnpj);
+        return usuarioBusiness.getClienteByCnpj(cnpjApenasComLetras) != null ? true : false;
     };
 
     public boolean verificarCnpjSerasa(String cnpj) {
@@ -34,7 +35,7 @@ public class CNPJBusiness {
         boolean status = true;
         String cnpjApenasComLetras= DocumentosUtils.getCnpjApenasComLetras(cnpj);
         try {
-            String uri = "https://www.receitaws.com.br/v1/documento/" + cnpjApenasComLetras;
+            String uri = "https://www.receitaws.com.br/v1/cnpj/" + cnpjApenasComLetras;
             String response = rest.getForObject(uri, String.class);
             JsonObject responseJson = gson.fromJson(response, JsonObject.class);
             status = responseJson.get("situacao").getAsString().equals("ATIVA");
