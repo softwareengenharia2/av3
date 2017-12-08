@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
+
 @Service
 public class CNPJBusiness {
 
@@ -16,6 +17,13 @@ public class CNPJBusiness {
     private RestTemplate rest;
 
     private Gson gson = new Gson();
+
+    @Autowired
+    private UsuarioBusiness usuarioBusiness;
+
+    public Boolean existsCnpj(String cnpj) {
+        return usuarioBusiness.getClienteByCnpj(cnpj) == null ? true : false;
+    };
 
     public boolean verificarCnpjSerasa(String cnpj) {
 

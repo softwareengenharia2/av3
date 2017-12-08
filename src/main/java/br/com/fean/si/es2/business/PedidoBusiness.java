@@ -31,7 +31,7 @@ public class PedidoBusiness {
 
     private void validarCnpj(String cnpj) {
 
-        if( usuarioBusiness.containsCnpj(cnpj) ) {
+        if( cnpjBusiness.existsCnpj(cnpj) ) {
             throw new ResponseException("CNPJ já cadastrado. Acesse o ambiente interno para realizar novos pedidos.");
         }
 

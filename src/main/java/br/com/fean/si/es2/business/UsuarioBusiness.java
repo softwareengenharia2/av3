@@ -23,11 +23,6 @@ public class UsuarioBusiness {
         return dao.getByCnpj(cnpj);
     }
 
-    public Boolean containsCnpj(String cnpj) {
-        Usuario usuario = getClienteByCnpj(cnpj);
-        return usuario == null ? true : false;
-    }
-
     private Usuario insert(Usuario usuario, TipoDeUsuario tipo) {
         usuario.setTipoDeUsuario(tipo);
         dao.persist(usuario);
