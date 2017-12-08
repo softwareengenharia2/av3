@@ -22,8 +22,7 @@ public class CNPJBusiness {
     private UsuarioBusiness usuarioBusiness;
 
     public Boolean existsCnpj(String cnpj) {
-        String cnpjApenasComLetras = DocumentosUtils.getCnpjApenasComLetras(cnpj);
-        return usuarioBusiness.getClienteByCnpj(cnpjApenasComLetras) != null ? true : false;
+        return usuarioBusiness.getClienteByCnpj(cnpj) != null ? true : false;
     };
 
     public boolean verificarCnpjSerasa(String cnpj) {
