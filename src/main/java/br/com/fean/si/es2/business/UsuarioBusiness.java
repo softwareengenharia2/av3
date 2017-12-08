@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -42,10 +43,10 @@ public class UsuarioBusiness {
     }
 
     public List<UsuarioDTO> list() {
-        List<Usuario> beans = dao.list();
+        Optional<List<Usuario>> beans = Optional.ofNullable(dao.list());
         List<UsuarioDTO> dtos = new ArrayList<>();
 
-        beans.forEach(b -> dtos.add(new UsuarioDTO(b)));
+        beans.ifPresent(obj -> obj.forEach(b -> dtos.add(new UsuarioDTO(b))) );
         return dtos;
     }
 

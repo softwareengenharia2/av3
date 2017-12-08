@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
@@ -21,11 +22,19 @@ public class AbstractDAO <G extends Bean> {
     }
 
     public G getById(Long id) {
-        return entityManager.find(getClazz(), id);
+        try {
+            return entityManager.find(getClazz(), id);
+        } catch(NoResultException e) {
+            return null;
+        }
     }
 
     public List<G> list() {
-        return entityManager.createQuery("Select bean FROM " + getClazz().getName() + " bean", getClazz() ).getResultList();
+        try {
+            return entityManager.createQuery("Select bean FROM " + getClazz().getName() + " bean", getClazz()).getResultList();
+        } catch(NoResultException e){
+            return null;
+        }
     }
 
 

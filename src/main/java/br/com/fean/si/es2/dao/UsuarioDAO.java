@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -16,8 +17,12 @@ public class UsuarioDAO extends AbstractDAO<Usuario> {
     private EntityManager entityManager;
 
     public Usuario getByCnpj(String cnpj) {
-        Query query = entityManager.createQuery("Select c From Cliente WHERE c.documento = :documento", Usuario.class);
-        query.setParameter("cnpj", cnpj);
-        return (Usuario) query.getSingleResult();
+        try {
+            Query query = entityManager.createQuery("Select c From Cliente WHERE c.documento = :documento", Usuario.class);
+            query.setParameter("cnpj", cnpj);
+            return (Usuario) query.getSingleResult();
+        }catch(NoResultException e) {
+            return null;
+        }
     }
 }
