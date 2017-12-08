@@ -16,7 +16,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="idCnpj">CNPJ</label>  
   <div class="col-md-2">
-  <input id="idCnpj" ng-model="cliente.cnpj" name="idCnpj" type="text" placeholder="CNPJ" class="form-control input-md" disabled="true">
+  <input id="idCnpj" ng-model="cliente.documento" name="idCnpj" type="text" placeholder="CNPJ" class="form-control input-md" disabled="true">
     
   </div>
 </div>
@@ -38,9 +38,9 @@
 </div>
 
 <div class="form-group">
-  <label class="col-md-4 control-label" for="cpf">CPF</label>  
+  <label class="col-md-4 control-label" for="cep">CPF</label>
   <div class="col-md-2">
-    <input id="cpf" ng-model="cliente.cpf" name="cpf" type="text" placeholder="CPF" class="form-control input-md" required="">
+    <input id="cep" ng-model="cliente.cep" name="cpf" type="text" placeholder="CEP" class="form-control input-md" required="">
   </div>
 </div>
 
@@ -76,7 +76,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="idConfirmar"></label>
   <div class="col-md-8">
-    <button id="idConfirmar" name="idConfirmar" class="btn btn-primary">confirmar</button>
+    <button id="idConfirmar" ng-click="salvar" name="idConfirmar" class="btn btn-primary">Salvar</button>
     <button id="idCancelar" ng-click="cancelar()" name="idCancelar" class="btn btn-danger">Cancelar</button>
   </div>
 </div>
